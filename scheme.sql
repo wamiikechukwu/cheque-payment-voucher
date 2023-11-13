@@ -3,7 +3,7 @@ create table users(
 id int primary key not null auto_increment,
 firstname varchar(30) not null ,
 lastname varchar(30) not null,
-email varchar(255) default 'someone@gmail.com',
+email varchar(255) not null,
 user_password  varchar(255) not null,
 age int,
 user_address text,
