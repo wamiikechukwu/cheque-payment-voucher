@@ -8,7 +8,7 @@ const {validateToken} = require('../service/jwt')
 
 
 /* create users. */
-router.post('/signup',validateNames, function(req, res) {
+router.post('/signup', function(req, res) {
   userController.create(req, res)
 });
 

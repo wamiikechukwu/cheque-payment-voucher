@@ -11,6 +11,6 @@ created_at timestamp default current_timestamp(),
 last_active timestamp default current_timestamp(),
 last_modified timestamp default current_timestamp(),
 account_locked tinyint default false,
-verified  tinyint default false
+verified  tinyint default false,
+role enum('user', 'preparer', 'verifier', 'authorizer', 'signatory', 'dev') not null
 );
-
