@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const userController = require('../controller/userController')
+const {validateEmail, validateNames, validatePassword} = require('../validation/registration')
 
 // todo delete
 const {validateToken} = require('../service/jwt')
