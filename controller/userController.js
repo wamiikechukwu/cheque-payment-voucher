@@ -52,19 +52,18 @@ exports.login = async (req, res) => {
         const comparedPassword = await bcrypt.compare(password, getHashedPassword)
 
         if(comparedPassword){
-            console.log(` Password matches`)
+            console.log(`Password matches`)
 
             // passed in findUserByEmail[0][0] to get the user details from the db
             const accessToken = jwt.createToken(findUserByEmail[0][0])
 
-            res.cookie('cpv_token', accessToken, { 
-                maxAge: 86400000
-            });
+            // TODO delete this, as using cookie isn't secure
+            // res.cookie('cpv_token', accessToken, { 
+            //     maxAge: 86400000
+            // });
 
-            res.status(200).json({ status: "OK", message: `${req.body.email} signin successfully` })
- 
+            res.status(200).json({ status: "OK", message: `${req.body.email} signin successfully`, token: accessToken}) 
             
-
         } else{
             res.status(500).json({ status: "FAILED", message: `wrong username or password` })
             console.log(` Password DOESN'T match`) 
