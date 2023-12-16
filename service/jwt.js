@@ -2,17 +2,20 @@ require('dotenv').config()
 const { sign, verify } = require('jsonwebtoken');
 
 
-exports.createToken = (user) => {
-  const accessToken = sign({ userEmail: user.email, userRole: user.role }, process.env.SECRET_KEY, { expiresIn: '30s' });
+exports.createToken = (userDetails, expiration) => {
+  const accessToken = sign({userDetails}, process.env.SECRET_KEY, expiration);
   console.log(accessToken)
   return accessToken
 }
 
+/*
+* validateToken servers to purpose
+* a) it serves a middleware to prevent repeatedly user signins
+* b) use for validating token
+*/
 exports.validateToken = (req, res, next) => {
-  // TODO delete this as it uses cookie which isn't secure
-  // const accessToken = req.cookies['cpv_token'];
 
-  const authHeader = req.headers.authkey; //authorization
+  const authHeader = req.headers.authorization
 
   if (!authHeader) {
     return res.status(401).json({ status: 'ERROR', message: 'User not authenticated' })
