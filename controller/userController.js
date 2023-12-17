@@ -55,7 +55,8 @@ exports.login = async (req, res) => {
             console.log(`Password matches`)
 
             // passed in findUserByEmail[0][0] to get the user details from the db
-            const accessToken = jwt.createToken(findUserByEmail[0][0])
+
+            const accessToken = jwt.createToken({email:findUserByEmail[0][0].email, role:findUserByEmail[0][0].role}, {expiresIn: '24h'})
 
             // TODO delete this, as using cookie isn't secure
             // res.cookie('cpv_token', accessToken, { 
