@@ -2,9 +2,7 @@ const express = require('express');
 const router = express.Router();
 const userController = require('../controller/userController')
 const { validateEmail, validateNames, validatePassword } = require('../validation/registration')
-
-// todo delete
-const { validateToken } = require('../service/jwt')
+const {verify} = require('../middlewares/authentication')
 
 
 /* create users. */
@@ -17,7 +15,7 @@ router.post('/signin', (req, res) => {
 })
 
 // TODO: move to its own folder
-router.get('/dashboard', validateToken, (req, res) => {
+router.get('/dashboard', verify, (req, res, next) => {
   res.json({ message: "this is the dashboard" })
 })
 
