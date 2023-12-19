@@ -23,7 +23,7 @@ exports.create = async (req, res) => {
 
         await user.create(req.body)
 
-        res.status(200).json({ status: "OK", message: `${req.body.email} account create successfully` })
+        res.status(200).json({ status: "OK", message: `${req.body.email} account create successfully`})
 
         console.log(`Account created for ${email} successfully`)
 
@@ -63,7 +63,7 @@ exports.login = async (req, res) => {
             //     maxAge: 86400000
             // });
 
-            res.status(200).json({ status: "OK", message: `${req.body.email} signin successfully`, token: accessToken}) 
+            res.status(200).json({ status: "OK", email: req.body.email, message: `${req.body.email} signin successfully`, token: accessToken}) 
             
         } else{
             res.status(500).json({ status: "FAILED", message: `wrong username or password` })
