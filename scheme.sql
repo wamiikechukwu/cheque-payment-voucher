@@ -14,3 +14,9 @@ account_locked tinyint default false,
 verified  tinyint default false,
 role enum('user', 'preparer', 'verifier', 'authorizer', 'signatory', 'dev') not null
 );
+
+--create bank tables--
+--create cpv tables--
+
+--create capv tables--
+--create cpv tables--
