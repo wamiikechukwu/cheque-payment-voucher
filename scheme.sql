@@ -31,8 +31,10 @@ create table cpv(
     bank int,
     code int,
     account_name varchar(30),
-    description text,
+    cpv_description text,
     amount_total int,
     cheque_type varchar(30),
+    created_at timestamp default current_timestamp()
+    modified_at timestamp default current_timestamp()
 	FOREIGN KEY (bank) REFERENCES bank(id)
 );
