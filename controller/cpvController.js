@@ -1,9 +1,9 @@
 const cpvModel = require('../model/cpv')
 
-exports.add = async (req, res) => {
+exports.create = async (req, res) => {
 
     // check no empty field
-    // 
+    //
 
     try {
         await cpvModel.createCPV(req.body)

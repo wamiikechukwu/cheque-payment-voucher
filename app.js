@@ -19,10 +19,8 @@ app.use(cors())
 // for preflighting read more https://www.npmjs.com/package/cors
 app.options('*', cors())
 
-//index router is redundate
+//TODO index router is redundate
 app.use('/', indexRouter);
-// app.use('/api', usersRouter);
 app.use('/api', api);
-// app.use('/api/cpv', cpvRouter);
 
 module.exports = app;
