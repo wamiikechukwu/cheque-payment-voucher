@@ -7,7 +7,7 @@ exports.create = async (req, res) => {
 
     try {
         await cpvModel.createCPV(req.body)
-        res.status(200).json({ message: `added succesfully` })
+        return res.status(200).json({ message: `added succesfully` })
 
     } catch (error) {
         console.log(error)

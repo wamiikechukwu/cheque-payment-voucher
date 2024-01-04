@@ -12,13 +12,12 @@ exports.verify = function (permission) {
                 return res.status(401).json({ status: 'ERROR', message: 'User not authenticated' })
             }
 
-            const token = authHeader.split(' ')[1];
+            // const token = authHeader.split(' ')[1];
 
-            const validToken = jwt.validateToken(token)
+            const validToken = jwt.validateToken(authHeader)
 
             if (validToken) {
                 req.authenticated = true
-                res.status(204).json({status: 'valid', message: `token valid with payload ${validToken}`})
                 return next();
             } else {
                 return res.status(403).json({ status: 'INVALID TOKEN', message: 'JWT token invalid' })

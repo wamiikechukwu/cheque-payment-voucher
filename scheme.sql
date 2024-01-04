@@ -16,7 +16,7 @@ role enum('user', 'preparer', 'verifier', 'authorizer', 'signatory', 'dev') not 
 create table bank(
     id int primary key not null auto_increment,
     bank_name varchar(30),
-    account_no init,
+    account_no int,
     description varchar(50),
     bank_type varchar(30)
 );
@@ -34,7 +34,7 @@ create table cpv(
     cpv_description text,
     amount_total int,
     cheque_type varchar(30),
-    created_at timestamp default current_timestamp()
-    modified_at timestamp default current_timestamp()
+    created_at timestamp default current_timestamp(),
+    modified_at timestamp default current_timestamp(),
 	FOREIGN KEY (bank) REFERENCES bank(id)
 );
