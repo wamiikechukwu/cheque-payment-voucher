@@ -4,7 +4,7 @@ const cpvController = require('../controller/cpvController')
 const auth = require('../middlewares/authentication')
 
 /* create users. */
-router.post('/cpv/add', auth.verify(""), function (req, res) {
+router.post('/cpv/add', auth.verify("users"), function (req, res) {
     cpvController.create(req, res)
   });
 

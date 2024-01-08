@@ -1,7 +1,7 @@
 const user = require('../model/user')
 const bcrypt = require('bcrypt')
 
-const jwt = require('../service/jwt')
+const jwt = require('../helper/jwt')
 
 
 exports.create = async (req, res) => {
@@ -59,15 +59,15 @@ exports.login = async (req, res) => {
             const accessToken = jwt.createToken({email:findUserByEmail[0][0].email, role:findUserByEmail[0][0].role}, {expiresIn: '24h'})
 
             // TODO delete this, as using cookie isn't secure
-            // res.cookie('cpv_token', accessToken, { 
+            // res.cookie('cpv_token', accessToken, {
             //     maxAge: 86400000
             // });
 
-            res.status(200).json({ status: "OK", email: req.body.email, message: `${req.body.email} signin successfully`, token: accessToken}) 
-            
+            res.status(200).json({ status: "OK", email: req.body.email, message: `${req.body.email} signin successfully`, token: accessToken})
+
         } else{
             res.status(500).json({ status: "FAILED", message: `wrong username or password` })
-            console.log(` Password DOESN'T match`) 
+            console.log(` Password DOESN'T match`)
         }
 
     } catch (error) {

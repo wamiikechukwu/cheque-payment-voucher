@@ -1,0 +1,39 @@
+{
+    "permissions": {
+        "master": {
+          "master": true,
+          "owner": true,
+          "admin": true,
+          "user": true,
+          "developer": true
+        },
+        "owner": {
+          "master": false,
+          "owner": true,
+          "admin": true,
+          "user": true,
+          "developer": true
+        },
+        "admin": {
+          "master": false,
+          "owner": false,
+          "admin": true,
+          "user": true,
+          "developer": false
+        },
+        "user": {
+          "master": false,
+          "owner": false,
+          "admin": false,
+          "user": true,
+          "developer": false
+        },
+        "developer": {
+          "master": false,
+          "owner": false,
+          "admin": false,
+          "user": true,
+          "developer": true
+        }
+      }
+}

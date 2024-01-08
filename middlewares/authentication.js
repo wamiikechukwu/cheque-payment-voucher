@@ -1,5 +1,13 @@
-const jwt = require('./../service/jwt')
+const jwt = require('../helper/jwt')
+const config = require('config')
+const permissions = config.get('permissions')
 
+/**
+ * permission parameter is supplied in the api folder
+ * Permissions is supplied from the config
+ * @param {*} permission
+ * @returns
+ */
 exports.verify = function (permission) {
 
     return function (req, res, next) {
@@ -17,8 +25,12 @@ exports.verify = function (permission) {
             const validToken = jwt.validateToken(authHeader)
 
             if (validToken) {
-                req.authenticated = true
-                return next();
+
+                if (permission === permissions[validToken.userDetails.role][permission]) {
+                    req.authenticated = true
+                    return next();
+
+                } else throw new Error(`user doesn't have permission`)
             } else {
                 return res.status(403).json({ status: 'INVALID TOKEN', message: 'JWT token invalid' })
             }
